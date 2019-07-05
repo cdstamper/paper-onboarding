@@ -35,6 +35,11 @@ class OnboardingContentView: UIView {
     required init?(coder _: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    func getCurrentItem() -> OnboardingContentViewItem? {
+        return self.currentItem
+    }
+    
 }
 
 // MARK: public

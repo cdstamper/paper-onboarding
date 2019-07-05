@@ -80,6 +80,11 @@ open class PaperOnboarding: UIView {
 // MARK: methods
 
 public extension PaperOnboarding {
+    
+    
+    func currentItem() -> OnboardingContentViewItem? {
+        return self.contentView?.getCurrentItem()
+    }
 
     /**
      Scrolls through the PaperOnboarding until a index is at a particular location on the screen.
