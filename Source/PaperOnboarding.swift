@@ -18,10 +18,8 @@ public struct OnboardingItemInfo {
     public let descriptionColor: UIColor
     public let titleFont: UIFont
     public let descriptionFont: UIFont
-    public let descriptionLabelPadding: CGFloat
-    public let titleLabelPadding: CGFloat
     
-    public init (informationImage: UIImage, title: String, description: String, pageIcon: UIImage, color: UIColor, titleColor: UIColor, descriptionColor: UIColor, titleFont: UIFont, descriptionFont: UIFont, descriptionLabelPadding: CGFloat = 0, titleLabelPadding: CGFloat = 0) {
+    public init (informationImage: UIImage, title: String, description: String, pageIcon: UIImage, color: UIColor, titleColor: UIColor, descriptionColor: UIColor, titleFont: UIFont, descriptionFont: UIFont) {
         self.informationImage = informationImage
         self.title = title
         self.description = description
@@ -31,8 +29,6 @@ public struct OnboardingItemInfo {
         self.descriptionColor = descriptionColor
         self.titleFont = titleFont
         self.descriptionFont = descriptionFont
-        self.descriptionLabelPadding = descriptionLabelPadding
-        self.titleLabelPadding = titleLabelPadding
     }
 }
 
@@ -61,7 +57,7 @@ open class PaperOnboarding: UIView {
 
     fileprivate var fillAnimationView: FillAnimationView?
     fileprivate var pageView: PageView?
-    public fileprivate(set) var gestureControl: GestureControl?
+    fileprivate var gestureControl: GestureControl?
     fileprivate var contentView: OnboardingContentView?
     
     public init(pageViewBottomConstant: CGFloat = 32) {
@@ -84,6 +80,11 @@ open class PaperOnboarding: UIView {
 // MARK: methods
 
 public extension PaperOnboarding {
+    
+    
+    func currentItem() -> OnboardingContentViewItem? {
+        return self.contentView?.getCurrentItem()
+    }
 
     /**
      Scrolls through the PaperOnboarding until a index is at a particular location on the screen.

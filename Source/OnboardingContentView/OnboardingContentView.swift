@@ -35,6 +35,11 @@ class OnboardingContentView: UIView {
     required init?(coder _: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    func getCurrentItem() -> OnboardingContentViewItem? {
+        return self.currentItem
+    }
+    
 }
 
 // MARK: public
@@ -88,10 +93,10 @@ extension OnboardingContentView {
     fileprivate func createItem(_ index: Int) -> OnboardingContentViewItem {
 
         guard let info = delegate?.onboardingItemAtIndex(index) else {
-            return OnboardingContentViewItem.itemOnView(self, titlePadding: 0, descriptionPadding: 0)
+            return OnboardingContentViewItem.itemOnView(self)
         }
 
-        let item = Init(OnboardingContentViewItem.itemOnView(self, titlePadding: info.titleLabelPadding, descriptionPadding: info.descriptionLabelPadding)) {
+        let item = Init(OnboardingContentViewItem.itemOnView(self)) {
             $0.imageView?.image = info.informationImage
             $0.titleLabel?.text = info.title
             $0.titleLabel?.font = info.titleFont

@@ -12,23 +12,20 @@ protocol GestureControlDelegate: class {
     func gestureControlDidSwipe(_ direction: UISwipeGestureRecognizer.Direction)
 }
 
-public class GestureControl: UIView {
+class GestureControl: UIView {
 
     weak var delegate: GestureControlDelegate!
-    
-    public private(set) var swipeLeft: UISwipeGestureRecognizer!
-    public private(set) var swipeRight: UISwipeGestureRecognizer!
 
     init(view: UIView, delegate: GestureControlDelegate) {
         self.delegate = delegate
 
         super.init(frame: CGRect.zero)
 
-        swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(GestureControl.swipeHandler(_:)))
+        let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(GestureControl.swipeHandler(_:)))
         swipeLeft.direction = .left
         addGestureRecognizer(swipeLeft)
 
-        swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(GestureControl.swipeHandler(_:)))
+        let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(GestureControl.swipeHandler(_:)))
         swipeRight.direction = .right
         addGestureRecognizer(swipeRight)
 

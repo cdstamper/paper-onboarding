@@ -8,7 +8,7 @@
 
 import UIKit
 
-class PageContainer: UIView {
+class PageContrainer: UIView {
 
     var items: [PageViewItem]?
     let space: CGFloat // space between items
@@ -35,7 +35,7 @@ class PageContainer: UIView {
 
 // MARK: public
 
-extension PageContainer {
+extension PageContrainer {
 
     func currenteIndex(_ index: Int, duration: Double, animated _: Bool) {
         guard let items = self.items,
@@ -52,7 +52,7 @@ extension PageContainer {
 
 // MARK: animations
 
-extension PageContainer {
+extension PageContrainer {
 
     fileprivate func animationItem(_ item: PageViewItem, selected: Bool, duration: Double, fillColor: Bool = false) {
         let toValue = selected == true ? selectedItemRadius * 2 : itemRadius * 2
@@ -72,7 +72,7 @@ extension PageContainer {
 
 // MARK: create
 
-extension PageContainer {
+extension PageContrainer {
 
     fileprivate func createItems(_ count: Int, radius: CGFloat, selectedRadius: CGFloat, itemColor: (Int) -> UIColor) -> [PageViewItem] {
         var items = [PageViewItem]()

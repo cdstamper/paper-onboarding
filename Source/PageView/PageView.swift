@@ -25,7 +25,7 @@ class PageView: UIView {
     }
 
     fileprivate var containerX: NSLayoutConstraint?
-    var containerView: PageContainer?
+    var containerView: PageContrainer?
 
     init(frame: CGRect, itemsCount: Int, radius: CGFloat, selectedRadius: CGFloat, itemColor: @escaping (Int) -> UIColor) {
         self.itemsCount = itemsCount
@@ -119,8 +119,8 @@ extension PageView {
 
 extension PageView {
 
-    fileprivate func createContainerView() -> PageContainer {
-        let pageControl = PageContainer(radius: itemRadius,
+    fileprivate func createContainerView() -> PageContrainer {
+        let pageControl = PageContrainer(radius: itemRadius,
                                          selectedRadius: selectedItemRadius,
                                          space: space,
                                          itemsCount: itemsCount,
@@ -172,6 +172,7 @@ extension PageView {
         if animated == true {
             UIView.animate(withDuration: duration,
                            delay: 0,
+                           options: UIView.AnimationOptions(),
                            animations: {
                                self.layoutIfNeeded()
                            },
